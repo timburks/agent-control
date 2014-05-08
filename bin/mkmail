@@ -1,7 +1,7 @@
 #!/usr/local/bin/nush
 
 (def install (source destination)
-     (set string ((NSString stringWithContentsOfFile:(+ "/home/control/mailconfig" source)
+     (set string ((NSString stringWithContentsOfFile:(+ "/home/control/mailconfig/" source)
                                             encoding:NSUTF8StringEncoding
                                                error:nil)
                   stringByReplacingOccurrencesOfString:"{{HOSTNAME}}"
@@ -12,12 +12,13 @@
 (if (eq (args count) 3)
     (then (global HOSTNAME (args 2))
           (install "etc-aliases" "/etc/aliases")
-          (install "etc-dovecot-dovecot.conf" "/etc/dovecot/dovecot.cnf")
+          (install "etc-dovecot-dovecot.conf" "/etc/dovecot/dovecot.conf")
           (install "etc-hostname" "/etc/hostname")
           (install "etc-mailname" "/etc/mailname")
           (install "etc-postfix-main.cf" "/etc/postfix/main.cf")
           (install "etc-postfix-master.cf" "/etc/postfix/master.cf")
           (system "newaliases")
+          (system "postfix stop")
           (system "postfix start")
           (system "service dovecot restart")
           (puts "ok"))

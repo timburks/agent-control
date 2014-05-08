@@ -14,8 +14,8 @@ inet_interfaces = all
 alias_maps = hash:/etc/aliases 
 alias_database = hash:/etc/aliases
 
-smtpd_tls_cert_file=/home/control/etc/mailcert.pem
-smtpd_tls_key_file=/home/control/etc/mail.key
+smtpd_tls_cert_file=/home/control/etc/agent.crt
+smtpd_tls_key_file=/home/control/etc/agent.key
 smtpd_use_tls=yes
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache

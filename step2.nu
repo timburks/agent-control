@@ -26,3 +26,6 @@
 ;; update nginx configuration
 (system "ssh root@#{agent} /usr/sbin/nginx -s stop")
 (system "ssh root@#{agent} /home/control/bin/prime-nginx")
+
+;; configure mail
+(system "ssh root@#{agent} /home/control/bin/mkmail #{agent}")
