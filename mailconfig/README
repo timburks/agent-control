@@ -1,0 +1,10 @@
+;;
+;; Mail Server setup
+;;
+;; https://www.digitalocean.com/community/articles/how-to-set-up-a-postfix-e-mail-server-with-dovecot
+
+;; upon installation, run:
+newaliases
+postfix start
+service dovecot restart
+
