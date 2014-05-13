@@ -143,7 +143,7 @@ http {
             proxy_pass  http://127.0.0.1:2010;
         }
 #{(locations-for-apps apps)}
-        client_max_body_size 10M;
+        client_max_body_size 30M;
     }
 #{(servers-for-apps apps)}
 }
@@ -170,6 +170,7 @@ END)
             proxy_pass http://#{(app _id:)};
             proxy_set_header X-Forwarded-For $remote_addr;
         }
+        client_max_body_size 10M;
     }
 END)))))
      RESULTS)
